@@ -1,0 +1,6 @@
+{
+  "name": "AI Question Paper Generator",
+  "description": "Upload a PDF chapter, configure options, and let AI generate a question paper. The generated paper can be previewed in real-time and downloaded as a PDF.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}

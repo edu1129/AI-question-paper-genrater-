@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Question Paper Generator with Math Support</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom scrollbar for WebKit browsers */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #2d3748; /* bg-slate-700 */
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #4a5568; /* bg-slate-600 */
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #718096; /* bg-slate-500 */
+    }
+
+    /* For A4 Preview Area Styling */
+    #pdf-content-area {
+      font-family: 'Times New Roman', Times, serif;
+      line-height: 1.5; 
+      color: #000; 
+    }
+    #pdf-content-area h1, #pdf-content-area h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    #pdf-content-area h1 {
+      font-size: 1.45em; 
+      font-weight: bold;
+    }
+    #pdf-content-area h2 {
+      font-size: 1.27em; 
+      font-weight: bold;
+    }
+     #pdf-content-area ol {
+      list-style-type: decimal;
+      margin-left: 20px; 
+      padding-left: 10px;
+    }
+    #pdf-content-area li {
+      margin-bottom: 0.72em; 
+    }
+    #pdf-content-area p {
+        margin-bottom: 0.72em; 
+    }
+    .whitespace-pre-wrap {
+        white-space: pre-wrap;
+    }
+    #a4-outer-preview {
+      overflow-y: auto; 
+    }
+    /* MathJax CHTML/SVG output can sometimes affect line height slightly. */
+    /* Removed the global override: .MathJax { line-height: normal !important; } 
+       Allow MathJax to manage its own internal line heights for better rendering.
+    */
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "pdfjs-dist": "https://esm.sh/pdfjs-dist@4.4.168",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react-icons/": "https://esm.sh/react-icons@^5.5.0/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.4.0",
+    "jspdf": "https://esm.sh/jspdf@^3.0.1",
+    "html2canvas": "https://esm.sh/html2canvas@^1.4.1"
+  }
+}
+</script>
+<!-- MathJax Configuration -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      tags: 'ams' // For equation numbering if needed (e.g., \begin{equation}...\end{equation})
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'code'], // Removed 'pre' to allow MathJax in answers
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    startup: {
+      ready: () => {
+        console.log('MathJax is ready.');
+        window.MathJax.startup.defaultReady();
+      }
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-slate-900">
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
