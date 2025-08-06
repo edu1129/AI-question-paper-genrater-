@@ -2,7 +2,7 @@
 import { LanguageOption, ObjectiveLayout } from './types';
 
 export const APP_TITLE = "AI Question Paper Generator";
-export const GEMINI_MODEL_NAME = "gemini-2.5-flash-preview-04-17";
+export const GEMINI_MODEL_NAME = "gemini-2.5-pro";
 
 export const SUPPORTED_LANGUAGES: LanguageOption[] = [
   { value: "English", label: "English" },
